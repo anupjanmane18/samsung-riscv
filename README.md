@@ -22,15 +22,12 @@ I have successfully run the virtual machine and compiled the tasks.
 
 Initial task is:-
 
-### write a program to compile the sum of first n natural numbers in c:
+### write a program to compile the sum of first 5 natural numbers in c:
 
-![image](https://github.com/user-attachments/assets/c5c65959-0f66-48b3-8686-d626c63d6d2d)
-
-
-This is the code to run in terminal to get output:
+we have written the code sum of 1st 5 numbers in leafpad as shown below. that code will be run in terminal to get output as 15 for 1st 5 numbers as shown below :
 
 
-![image](https://github.com/user-attachments/assets/06bc9aeb-f7b3-4572-b44f-719e189ea46b)
+![image](https://github.com/anupjanmane18/samsung-riscv/blob/main/task1/C%20Code%20compiled%20on%20gcc%20Compiler.png)
 
 
 A program is run to obtain risc-v version of the code previously written in c:
