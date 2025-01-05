@@ -40,14 +40,16 @@ this code will be run in terminal to get output as 15 for 1st 5 numbers as shown
 1. Using the cat command, the entire C code will be displayed on the terminal.
    
 ![image](https://github.com/anupjanmane18/samsung-riscv/blob/main/task1/cat%20Command.png)
-A program is run to obtain risc-v version of the code previously written in c:
-![image](https://github.com/user-attachments/assets/bec40d22-d99e-416a-82db-03d99369ab9e)
+
+2. A program is run to obtain risc-v version of the code previously written in c:
+
+![image](https://github.com/anupjanmane18/samsung-riscv/blob/main/task1/riscv_c%20code.png)
 
 
 
 
 
-As the whole version of above code looks lengthier with different commands, we have obtained the required main 
+3. As the whole version of above code looks lengthier with different commands, we have obtained the required main 
 part to compare the execution in assembly language:
 
 
