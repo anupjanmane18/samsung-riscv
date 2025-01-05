@@ -4,7 +4,7 @@
 **Name:** Anup Nagaraj Janmane  
 **College:** KLE Institue of Technology  
 **Email ID:** anupjanmane18@gmail.com  
-**GitHub Profile:** [maazm007](https://github.com/maazm007?tab=repositories)  
+**GitHub Profile:** [Anup_janmane_Github](https://github.com/anupjanmane18)  
 **LinkedIN Profile:** [Anup_Janmane](https://www.linkedin.com/in/anup-janmane-a960b325b/)
 
 ----------------------------------------------------------------------------------------------------------------
