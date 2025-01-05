@@ -24,7 +24,10 @@ Initial task is:-
 
 ### write a program to compile the sum of first 5 natural numbers in c:
 
-we have written the code sum of 1st 5 numbers in leafpad as shown below. that code will be run in terminal to get output as 15 for 1st 5 numbers as shown below :
+we have written the code sum of 1st 5 numbers in leafpad as shown below.
+gcc sum_1ton.c
+./a.out
+this code will be run in terminal to get output as 15 for 1st 5 numbers as shown below :
 
 
 ![image](https://github.com/anupjanmane18/samsung-riscv/blob/main/task1/C%20Code%20compiled%20on%20gcc%20Compiler.png)
