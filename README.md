@@ -55,7 +55,7 @@ part to compare the execution in assembly language:
 
 
 ![image](https://github.com/anupjanmane18/samsung-riscv/blob/main/task1/Objdump%20using%20-O1%20format.png)
-###End of 1st task
+**### End of 1st task**
 </details>
 
 ------------------------------------------------------------------------------------------------------------------
