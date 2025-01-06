@@ -12,7 +12,8 @@
 <details>
 <summary><b>Task 1:</b>Task is to install all the essential tools required for this samsung-RISCV  Workshop such as Ubuntu on VMBox & refer to C based and RISCV based lab videos and execute the task of compiling the C code using gcc and riscv compiler</summary><br>
 
-  **Install Ubuntu 20.04 LTS on Oracle Virtual Machine Box**
+### Install Ubuntu 20.04 LTS on Oracle Virtual Machine Box
+
 Firstly, I have downloaded the virtual box from the links provided to us and
 loaded a linux version with image dock file sent  
 ![Ubuntu and VMBox Installation](https://github.com/anupjanmane18/samsung-riscv/blob/main/task1/virtual_machine_installed.png)
