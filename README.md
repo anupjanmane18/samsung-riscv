@@ -44,7 +44,7 @@ this code will be run in terminal to get output as 15 for 1st 5 numbers as shown
 
 2. A program is run to obtain risc-v version of the code previously written in c:
 
-![image](https://github.com/anupjanmane18/samsung-riscv/blob/main/task1/riscv_c%20code.png)
+![image](https://github.com/anupjanmane18/samsung-riscv/blob/main/task1/RISCV_C_CODE.png)
 
 
 
