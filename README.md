@@ -27,9 +27,11 @@ Initial task is:-
 
 we have written the code sum of 1st 5 numbers in leafpad as shown below.
 
+```
 gcc sum_1ton.c
 
 ./a.out
+```
 
 this code will be run in terminal to get output as 15 for 1st 5 numbers as shown below :
 
