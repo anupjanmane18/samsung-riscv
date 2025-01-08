@@ -48,7 +48,7 @@ this code will be run in terminal to get output as 15 for 1st 5 numbers as shown
 	riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o sum_1ton.o sum_1ton.c
 	```
 
-![image](https://github.com/anupjanmane18/samsung-riscv/blob/main/task1/RISCV_C_CODE.png)
+![image](https://github.com/anupjanmane18/samsung-riscv/blob/main/task1/RISCV_C_CODE_O1.png)
 
 
 3. As the whole version of above code looks lengthier we have used below code to make it shorter
@@ -61,7 +61,7 @@ this code will be run in terminal to get output as 15 for 1st 5 numbers as shown
 
 	
  
-![image](https://github.com/anupjanmane18/samsung-riscv/blob/main/task1/O1_objdump.png)
+![image](https://github.com/anupjanmane18/samsung-riscv/blob/main/task1/Objdump%20using%20-O1%20format.png)
 
 4. Open the same terminal and run the given command:
  
