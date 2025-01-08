@@ -86,7 +86,7 @@ this code will be run in terminal to get output as 15 for 1st 5 numbers as shown
 
 ![image](https://github.com/anupjanmane18/samsung-riscv/blob/main/task1/Objdump%20using%20-Ofast%20format.png)
 
-**### End of 1st task**
+### End of 1st task
 </details>
 
 ------------------------------------------------------------------------------------------------------------------
