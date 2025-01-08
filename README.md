@@ -72,7 +72,7 @@ this code will be run in terminal to get output as 15 for 1st 5 numbers as shown
 
 ![image](https://github.com/anupjanmane18/samsung-riscv/blob/main/task1/RISCV_CODE_Ofast.png)
 
-5. As the whole version of above code looks lengthier we have used below code to make it shorter
+5. As the whole version of above code looks lengthier as earlier we have used below code to make it shorter
 	
  	```
 	riscv64 -unknown-elf-objdump -d sum1ton.o | less
