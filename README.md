@@ -126,6 +126,8 @@ I understood the principle and working of the whole program and how various regi
 
 ### Multiplication of first n natural numbers (C program):
 
+**Here i have used n value as 7**
+
 ![image](https://github.com/anupjanmane18/samsung-riscv/blob/main/task2/c_code_for_mult_on_gcc_Compiler.png)
 
 **riscv_objdump_O1_format**
