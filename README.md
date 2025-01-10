@@ -183,3 +183,8 @@ reg 0 a2(your registor address)
 
 
 * I have used same for both O1_format & Ofast_formate in sum1ton.c & mult1ton.c files 
+
+### End of 2nd task
+</details>
+
+------------------------------------------------------------------------------------------------------------------
