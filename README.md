@@ -217,6 +217,7 @@ There are 6 instruction formats in RISC-V:
 *  The entire 32 bits instruction is divided into 5 fields as shown below.
 
 ![I-type](https://github.com/maazm007/vsdsquadron-mini-internship/assets/83294849/4a53f5fa-d55a-4308-8f93-a0f2f3aedba0)
+
 **Example: ADDI rd, rs1, imm**
 
 
@@ -228,6 +229,7 @@ There are 6 instruction formats in RISC-V:
 *  The entire 32 bits instruction is divided into 6 fields as shown below.  
   
 ![s-type](https://github.com/maazm007/vsdsquadron-mini-internship/assets/83294849/fc9ddedc-4c99-4b6f-9765-c2e8c8e29302)
+
 **Example: SW rs2, imm(rs1)**
 
 
@@ -237,6 +239,7 @@ There are 6 instruction formats in RISC-V:
 *  The entire 32 bits instruction is divided into 8 fields as shown below.  
   
 ![B-type](https://github.com/maazm007/vsdsquadron-mini-internship/assets/83294849/14486f41-f3e4-4c4a-85b0-9acc56be3f46)
+
 **Example: BEQ rs1, rs2, imm**   
  
   
@@ -246,6 +249,7 @@ There are 6 instruction formats in RISC-V:
 *  The entire 32 bits instruction is divided into 3 fields as shown below.  
   
 ![u-type](https://github.com/maazm007/vsdsquadron-mini-internship/assets/83294849/4f3df58b-8c0c-45c6-ba39-a196547dd38f)
+
 **Example: LUI rd, imm**   
 
   
@@ -255,6 +259,7 @@ There are 6 instruction formats in RISC-V:
 *  The entire 32 bits instruction is divided into 6 fields as shown below.  
   
 ![j-type](https://github.com/maazm007/vsdsquadron-mini-internship/assets/83294849/5dc9a9be-4048-4a35-a99e-7b4a0075caa0)
+
 **Example: JAL rd, imm**
 
 
