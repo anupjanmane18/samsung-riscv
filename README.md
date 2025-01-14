@@ -262,7 +262,7 @@ There are 6 instruction formats in RISC-V:
 
 **Example: JAL rd, imm**
 
-###There are 15 unique instructions from RISCV objdump application as follows:
+### There are 15 unique instructions from RISCV objdump application as follows:
 ------------------------
 ### 1. ADDI sp, sp, -16  
 
