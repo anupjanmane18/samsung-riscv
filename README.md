@@ -279,6 +279,7 @@ There are 6 instruction formats in RISC-V:
   
 **32 bits instruction :** ```111111110000|00010|000|00010|0010011``` 
 
+---
 2. SD ra 8(sp) 
 
 ![S_type](https://github.com/user-attachments/assets/eab1ca7b-f6ef-48a0-8ea5-beb055acd129)
@@ -295,6 +296,7 @@ There are 6 instruction formats in RISC-V:
 
 **32 bits instruction :** ``` 00010|00100|110|10000|100011 ```
 
+--
 3. LD ra 8(sp)
 
 ![image](https://github.com/user-attachments/assets/1c0d8506-db98-45da-b412-5e2f1180b59e)
@@ -309,6 +311,7 @@ There are 6 instruction formats in RISC-V:
 
 **32 bits instruction :** ```0000000|01000|00010|011|00001|0000011```
 
+--
 4. MV a1 a0 
 
 
@@ -329,6 +332,7 @@ ADD a1, a0, x0**
 
 **32-bit instruction:** `0000000|00000|01010|000|01011|0110011`
 
+--
 5. BEQZ a5 101f0 <exit+0x2c>
 
 ![image](https://github.com/user-attachments/assets/8e3d4a6a-59fa-4afd-be84-5b38e3c0185b)
@@ -349,6 +353,7 @@ BEQ a5, x0, offset**
 
 **32-bit instruction:** `1000000|00000|01111|000|01110|1100011`
 
+--
 6. SRAI s1 a5 0x3
 
 ![image](https://github.com/user-attachments/assets/e1236784-f266-45a2-a05e-67706beeb944)
@@ -364,6 +369,7 @@ BEQ a5, x0, offset**
 
 **32-bit instruction:** `000000000011|01111|101|01001|0010011`
 
+--
 7. LUI a0 0x21 
 
 ![LUI_U_type](https://github.com/user-attachments/assets/9dcdd9ba-600f-489a-90cb-2bf6a806bbd8)
@@ -378,6 +384,7 @@ BEQ a5, x0, offset**
 
 **32 bits instruction :** ```0000000000000|00100001|01010|0110111``` 
 
+--
 8. JAL ra 10408 <printf>
 
 ![JAL_J_type](https://github.com/user-attachments/assets/e6aee0d7-2236-4d33-a7ef-9ddfece0cae9)
@@ -392,6 +399,7 @@ BEQ a5, x0, offset**
 		         
 **32 bits instruction :** ```0 1001100000 1 00001010|00001|1101111```
 
+--
 9. AUIPC a5 0xffff0
 
 ![image](https://github.com/user-attachments/assets/dc1b9458-2bce-4ea9-89c1-610b5170cd78)
@@ -405,6 +413,7 @@ BEQ a5, x0, offset**
 
 **32-bit instruction:** `111111111111|01111|0010111`
 
+--
 10. J 101b0 <atexit> 
 
 ![image](https://github.com/user-attachments/assets/d837a001-3588-4ea7-9627-851fb5ff4cc3)
@@ -418,6 +427,7 @@ BEQ a5, x0, offset**
 
 **32-bit instruction:** `0000000|0000000000|0|00000100|00000|1101111`
 
+--
 11. LW a0 0(sp)
 
 ![image](https://github.com/user-attachments/assets/8aa35f2b-bcd2-4619-a3dd-d22d0f706dff)
@@ -433,6 +443,7 @@ BEQ a5, x0, offset**
 
 **32-bit instruction:** `000000000000|00010|010|01010|0000011`
 
+--
 12. BENZ a5,10188 <do global dtors aux+0x4c>
     
 ![image](https://github.com/user-attachments/assets/31d8c899-4b38-4779-95d8-ed01a5ca0023)
@@ -450,6 +461,7 @@ BEQ a5, x0, offset**
 
 **32-bit instruction:** `0000001|00000|01111|001|1010|1100011`
 
+--
 13. LBU a5, 1944(gp) # 231a0 <completed.5468>
 
 ![image](https://github.com/user-attachments/assets/8f009b1b-1992-45c9-a6ee-aab390d88532)
@@ -465,6 +477,7 @@ BEQ a5, x0, offset**
 
 **32-bit instruction:** `11110001000|00011|100|01111|0000011`
 
+--
 14. LI a0 0
 
 ![image](https://github.com/user-attachments/assets/732699d9-8bdf-48e5-bbce-ff775e79ea57)
@@ -482,6 +495,7 @@ BEQ a5, x0, offset**
 
 **32-bit instruction:** `000000000000|00000|000|01010|0010011`
 
+--
 15. SLLI t0, t0,0x1f
 
 ![image](https://github.com/user-attachments/assets/caf27b0e-ce37-48a5-b43f-d278bd3c3c11)
