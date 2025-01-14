@@ -479,7 +479,7 @@ BEQ a5, x0, offset**
 
 **32-bit instruction:** `000000000000|00000|000|01010|0010011`
 
-15. SLLI to, t0,0x1f
+15. SLLI t0, t0,0x1f
 
 ![image](https://github.com/user-attachments/assets/caf27b0e-ce37-48a5-b43f-d278bd3c3c11)
 
