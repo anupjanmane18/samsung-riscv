@@ -263,3 +263,16 @@ There are 6 instruction formats in RISC-V:
 **Example: JAL rd, imm**
 
 
+ADDI sp, sp, -16  
+
+![I-type](https://github.com/anupjanmane18/samsung-riscv/blob/main/task3/ADDI_I_type.png)
+> * In this instruction ADD means Addition, I means Immediate,
+> * hence this instruction belongs to I-type instruction set.
+
+> Opcode for ADDI = 0010011  
+> rd = r12 = 00010  
+> rs1 = r4 = 00010  
+> imm[11:0] = -16 = 111111110000  
+> func3 = 000
+  
+**32 bits instruction :** ```111111110000_00010_000_00010_0010011``` 
