@@ -265,7 +265,8 @@ There are 6 instruction formats in RISC-V:
 
 1. ADDI sp, sp, -16  
 
-![I-type](https://github.com/anupjanmane18/samsung-riscv/blob/main/task3/ADDI_I_type.png)
+![I_type](https://github.com/user-attachments/assets/a26a328f-86e3-44bd-8197-b1d63b14179a)
+
 
 > * In this instruction ADD means Addition, I means Immediate,
 > * hence this instruction belongs to I-type instruction set.
@@ -280,7 +281,8 @@ There are 6 instruction formats in RISC-V:
 
 2. SD ra 8(sp) 
 
-![S-type](https://github.com/anupjanmane18/samsung-riscv/blob/main/task3/SD_S_type.png)
+![S_type](https://github.com/user-attachments/assets/eab1ca7b-f6ef-48a0-8ea5-beb055acd129)
+
 
 > * In this instruction SD means store doubleword instruction,
 > *  hence this instruction belongs to S-type instruction set.  
@@ -364,8 +366,8 @@ BEQ a5, x0, offset**
 
 7. LUI a0 0x21 
 
+![LUI_U_type](https://github.com/user-attachments/assets/9dcdd9ba-600f-489a-90cb-2bf6a806bbd8)
 
-![U-type](https://github.com/anupjanmane18/samsung-riscv/blob/main/task3/LUI_U_type.png)
 
 > * In this instruction LUI means Load Upper Immediate,
 > *  hence this instruction belongs to U-type instruction set.
@@ -378,7 +380,8 @@ BEQ a5, x0, offset**
 
 8. JAL ra 10408 <printf>
 
-![J-type](https://github.com/anupjanmane18/samsung-riscv/blob/main/task3/JAL_J_type.png)
+![JAL_J_type](https://github.com/user-attachments/assets/e6aee0d7-2236-4d33-a7ef-9ddfece0cae9)
+
 
 > * In this instruction JAL means Jump and Link,
 > *  hence this instruction belongs to J-type instruction set.
