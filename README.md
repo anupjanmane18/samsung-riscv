@@ -289,13 +289,13 @@ There are 6 instruction formats in RISC-V:
 > * In this instruction SD means store doubleword instruction,
 > *  hence this instruction belongs to S-type instruction set.  
  
-- **Immediate :** `000000010000` (split into imm[11:5] = `0000000` and imm[4:0] = `10000`)
-- **rs2 = ra :** `00010`
-- **rs1 = sp :** `00100`
-- **funct3:** `110`
-- **Opcode for SD :** `0100011` 
+- **Immediate :** 000000001000 (split into imm[11:5] = 0000000 and imm[4:0] = 01000)
+- **rs1 = sp :** 00010
+- **rs2 = ra :** 00001
+- **funct3:** 011
+- **Opcode for SD :** 0100011
 
-**32 bits instruction :** ``` 00010|00100|110|10000|100011 ```
+**32-bit instruction:** `0000000|00001|00010|011|01000|0100011`
 
 -------------
 ### 3. LD ra 8(sp)
