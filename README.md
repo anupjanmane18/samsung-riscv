@@ -304,13 +304,13 @@ There are 6 instruction formats in RISC-V:
 > * In this instruction LD means  load doubleword instruction,
 > *  hence this instruction belongs to S-type instruction set.
 
-- **Immediate :** `000000001000` (split into imm[11:5] = `0000000` and imm[4:0] = `01000`)
-- **rs1 = sp :** `00010`
-- **rd = ra :** `00001`
-- **funct3:** `011`
-- **Opcode for LD :** `0000011`
+- **Immediate :** 000000001000 (split into imm[11:5] = 0000000 and imm[4:0] = 01000)
+- **rs2 = ra :** 00001
+- **rs1 = sp :** 00010
+- **funct3:** 010 (assuming it's a store operation like `SW`)
+- **Opcode for Store :** 0100011
 
-**32 bits instruction :** ```0000000|01000|00010|011|00001|0000011```
+**32-bit instruction:** `0000000|00001|00010|010|01000|0100011`
 
 -------------------
 ### 4. MV a1 a0 
@@ -324,14 +324,14 @@ ADD a1, a0, x0**
 > * In this instruction MV means  pseudo-instruction,
 > *  hence this instruction belongs to S-type instruction set.
 
-- **funct7:** `0000000`
-- **rs2 = x0 :** `00000`
-- **rs1 = a0 :** `01010`
-- **funct3:** `000`
-- **rd = a1 :** `01011`
-- **Opcode for ADD :** `0110011`
+- **Immediate :** 0000000 (split into imm[11:5] = 0000000 and imm[4:0] = 00000)
+- **rs1 = a0 :** 01010
+- **rs2 = x0 :** 00000
+- **funct3:** 000
+- **Opcode for ADD :** 0100011
 
-**32-bit instruction:** `0000000|00000|01010|000|01011|0110011`
+**32-bit instruction:** `0000000|00000|01010|000|00000|0100011`
+
 
 ------------------------------
 ### 5. BEQZ a5 101f0 <exit+0x2c>
