@@ -516,3 +516,66 @@ BEQ a5, x0, offset**
 </details>
 
 ------------------------------------------------------------------------------------------------------------------
+
+
+<details>
+<summary><b>Task 4:</b> Use this RISC-V Core Verilog netlist and testbench for functional simulation experiment. Upload waveform snapshots for the commands on your GitHub. </summary>
+
+Reference GitHub repo is [![GitHub](https://img.shields.io/badge/-GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/vinayrayapati/rv32i/blob/main/iiitb_rv32i.v)
+
+## Starting with Functional Simulation
+* First I installed the iverilog and gtkwave using following commands:
+  ```
+  sudo apt-get update
+  ```
+  ```
+  sudo apt-get install iverilog gtkwave
+  ```
+* Cloning the github repository:
+   ```
+   git clone https://github.com/anupjanmane18/samsung_riscv
+   ```
+
+* Chanding the working directory to `samsung_riscv` using the following comand:
+  ```
+   cd samsung_riscv
+  ```
+
+* To simulate and run the verilog code , entered the following commands in the terminal:
+  ```
+  iverilog -o samsung_riscv iiitb_rv32i.v iiitb_rv32i_tb.v
+  ```
+  ```
+  ./samsung_riscv
+  ```
+* For seeing the output waveform I used the following command:
+  ```
+  gtkwave iiitb_rv32i.vcd
+  ```
+
+* The GTKWave will be opened and following window will be appeared  
+  
+![image](https://github.com/user-attachments/assets/8ebb8c40-d549-4bd2-9521-92a4200b617c)
+
+As shown in the figure below, all the instructions in the given verilog file is hard-coded, the designer has hard-coded each instructions based on their own pattern. Hence the 32-bits instruction that we generated in above task will not match with the given instruction.
+
+![image](https://github.com/user-attachments/assets/512edc06-4524-43f7-833f-e3d087869a38)
+
+#### Following are the differences between standard RISCV ISA and the Instruction Set given in the reference repository:  
+  
+|  **Operation**  |  **Standard RISCV ISA**  |  **Hardcoded ISA**  |  
+|  :----:  |  :----:  |  :----:  |  
+|  ADD R6, R2, R1  |  32'h00110333  |  32'h02208300  |  
+|  SUB R7, R1, R2  |  32'h402083b3  |  32'h02209380  |  
+|  AND R8, R1, R3  |  32'h0030f433  |  32'h0230a400  |  
+|  OR R9, R2, R5  |  32'h005164b3  |  32'h02513480  |  
+|  XOR R10, R1, R4  |  32'h0040c533  |  32'h0240c500  |  
+|  SLT R1, R2, R4  |  32'h0045a0b3  |  32'h02415580  |  
+|  ADDI R12, R4, 5  |  32'h004120b3  |  32'h00520600  |  
+|  BEQ R0, R0, 15  |  32'h00000f63  |  32'h00f00002  |  
+|  SW R3, R1, 2  |  32'h0030a123  |  32'h00209181  |  
+|  LW R13, R1, 2  |  32'h0020a683  |  32'h00208681  |  
+|  SRL R16, R14, R2  |  32'h0030a123  |  32'h00271803  |
+|  SLL R15, R1, R2  |  32'h002097b3  |  32'h00208783  |  
+
+
