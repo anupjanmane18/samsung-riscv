@@ -533,20 +533,20 @@ Reference GitHub repo is [![GitHub](https://img.shields.io/badge/-GitHub-181717?
   ```
 * Cloning the github repository:
    ```
-   git clone https://github.com/anupjanmane18/samsung_riscv
+   git clone https://github.com/anupjanmane18/anup
    ```
 
-* Chanding the working directory to `samsung_riscv` using the following comand:
+* Chanding the working directory to `anup` using the following comand:
   ```
-   cd samsung_riscv
+   cd anup
   ```
 
 * To simulate and run the verilog code , entered the following commands in the terminal:
   ```
-  iverilog -o samsung_riscv iiitb_rv32i.v iiitb_rv32i_tb.v
+  iverilog -o anup iiitb_rv32i.v iiitb_rv32i_tb.v
   ```
   ```
-  ./samsung_riscv
+  ./anup
   ```
 * For seeing the output waveform I used the following command:
   ```
