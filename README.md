@@ -739,3 +739,7 @@ As shown in the figure below, all the instructions in the given verilog file is 
 
 ![image](https://github.com/user-attachments/assets/94fd2459-651d-456e-890d-6103cb0b658b)
 
+### End of 4th task
+</details>
+
+------------------------------------------------------------------------------------------------------------------
