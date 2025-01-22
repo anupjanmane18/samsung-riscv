@@ -578,7 +578,7 @@ As shown in the figure below, all the instructions in the given verilog file is 
 |  SRL R16, R14, R2  |  32'h0030a123  |  32'h00271803  |
 |  SLL R15, R1, R2  |  32'h002097b3  |  32'h00208783  |  
 
-ADD 
+### Instruction 1. ADD 
 
 ![image](https://github.com/user-attachments/assets/f1b4a40d-b584-4fde-bb48-2132a76a858d)
 
@@ -591,9 +591,11 @@ ADD
 
 - **Output of ADD Operation**:
   - The ALU performs the addition `1 + 2`, resulting in `3`, which is shown in the `EX_MEM_ALUOUT` signal.
-sub
 
-![image](https://github.com/user-attachments/assets/37d1935c-97da-4b92-b938-01f4d7521e1e)
+### Instruction 2. SUB
+
+![image](https://github.com/user-attachments/assets/8ae77a86-82ae-4b89-93cc-0e5e060876b7)
+
 
 ### Detailed Explanation:
 - **Values Stored in Two Different Registers**:
@@ -604,9 +606,11 @@ sub
 
 - **Output of ADD Operation**:
   - The ALU performs the addition `1 - 2`, resulting in `-1(FFFFFFFF)`, which is shown in the `EX_MEM_ALUOUT` signal.
-and
 
-![image](https://github.com/user-attachments/assets/7dc5305b-c4c5-4ba1-a6e5-2a6f6c330b20)
+### Instruction 3. AND
+
+![image](https://github.com/user-attachments/assets/d8438554-d42e-4585-96de-55d731174ad8)
+
 
 #### Key Points:
 1. **Values Stored in Registers**:
@@ -627,9 +631,11 @@ and
    - **Decode Stage**: The values of `R1` and `R3` are read into `ID_EX_A` and `ID_EX_B`.
    - **Execute Stage**: The ALU performs the bitwise AND operation, resulting in `1`.
    - **Memory and Write Back Stages**: (Not shown explicitly but understood to follow.)
-or
 
-![image](https://github.com/user-attachments/assets/56ebb47c-95d9-48c3-9179-a2d462b494ae)
+### Instruction 4. OR 
+
+![image](https://github.com/user-attachments/assets/5282ec13-2fd0-4a2a-9bd0-fa6dd565709a)
+
 
 **Description:**
 - This instruction performs a bitwise OR operation between the values in registers R2 and R5 and stores the result in register R9.
@@ -639,9 +645,10 @@ or
 - The bitwise OR operation (`0010 | 0101`) results in `7` (binary: `0111`).
 
 
-xor 
+### Instruction 5. XOR
 
-![image](https://github.com/user-attachments/assets/70b0f365-84d7-4ad2-9e82-41d4331d3d29)
+![image](https://github.com/user-attachments/assets/c385fa51-f561-4293-b971-838145925155)
+
 
 **Description:**
 - This instruction performs a bitwise XOR operation between the values in registers R1 and R4 and stores the result in register R10.
@@ -651,7 +658,7 @@ xor
 - The bitwise XOR operation (`0001 ^ 0100`) results in `5` (binary: `0101`).
 
 
-SLT 
+### Instruction 6. SLT 
 
 ![Screenshot 2025-01-22 224702](https://github.com/user-attachments/assets/683dafb3-af55-409b-949e-89f8655a6296)
 
@@ -673,7 +680,7 @@ SLT
    - **Output of SLT will be 1**: Explains that if the value in `R2` is less than `R4`, the result will be 1; otherwise, it will be 0.
    - **32 bits instruction for SLT R1, R2, R4**: Shows the binary representation of the SLT instruction.
 
-ADDI 
+### Instruction 7. ADDI 
 
 ![image](https://github.com/user-attachments/assets/4317b78c-4289-42af-9d2a-e867f904b3f2)
 
@@ -695,7 +702,7 @@ ADDI
    - **Output of ADDI will be 9**: Explains that the value in `R4` (4) added to the immediate value (5) results in 9.
    - **32 bits instruction for ADDI R12, R4, 5**: Shows the binary representation of the ADDI instruction.
 
-BEQ 
+### Instruction 8. BEQ 
 
 ![image](https://github.com/user-attachments/assets/fae591e8-7c12-4cd5-8069-feab798b8710)
 
@@ -710,11 +717,25 @@ BEQ
 - **PC Update:** The instruction adds `15` to the PC.
   - PC = 10(0A in hexa) + 15 = 25(19 in hexa) .
 - **Result:** The updated PC value is `25(19 in hexa)`.
-BNE 
+
+
+### Instruction 9. BNE 
 
 ![image](https://github.com/user-attachments/assets/6aa52a22-cf8b-4d19-9433-6bbc8038afd6)
 
-SLL
+**Description:**
+- The `BEQ` (Branch if not Equal) instruction compares the values in registers `R0` and `R0`.
+- If the values are not equal, it adds the immediate value `20` to the program counter (PC).
+
+**Waveform Analysis:**
+- **Initial State:** The program counter (PC) is initially at `10`.
+- **Registers:** Both `R0` registers contain the value `0`.
+- **Condition:** Since `R0` is equal to `R0`, the condition is true.
+- **PC Update:** The instruction adds `20` to the PC.
+  - PC = 26(1A in hexa) + 20 = 46(2E in hexa) .
+- **Result:** The updated PC value is `46(2E in hexa)`.
+
+### Instruction 10. SLL
 
 ![image](https://github.com/user-attachments/assets/94fd2459-651d-456e-890d-6103cb0b658b)
 
