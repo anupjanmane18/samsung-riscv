@@ -17,7 +17,7 @@ $dumpvars (0, iiitb_rv32i_tb);
   
   #5 RN = 1'b0;
   
-  #300 $finish;
+  #500 $finish;
 
 end
 endmodule
