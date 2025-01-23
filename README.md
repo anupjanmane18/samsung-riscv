@@ -532,7 +532,12 @@ Reference GitHub repo is [![GitHub](https://img.shields.io/badge/-GitHub-181717?
   sudo apt-get install iverilog gtkwave
   ```
 * Cloning the github repository:
-   ```
+  - **make a github repository
+  - **upload the two filies
+  - 1. https://github.com/anupjanmane18/anup/blob/main/iiitb_rv32i.v
+    2. https://github.com/anupjanmane18/anup/blob/main/iiitb_rv32i_tb.v
+  - ** run the below code in cmd 
+  ```
    git clone https://github.com/anupjanmane18/anup
    ```
 
