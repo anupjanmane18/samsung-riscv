@@ -563,7 +563,7 @@ Reference GitHub repo is [![GitHub](https://img.shields.io/badge/-GitHub-181717?
   
 ![image](https://github.com/user-attachments/assets/8ebb8c40-d549-4bd2-9521-92a4200b617c)
 
-As shown in the figure below, all the instructions in the given verilog file is hard-coded, the designer has hard-coded each instructions based on their own pattern. Hence the 32-bits instruction that we generated in above task will not match with the given instruction.
+### As shown in the figure below, all the instructions in the given verilog file is hard-coded, the designer has hard-coded each instructions based on their own pattern. Hence the 32-bits instruction that we generated in above task will not match with the given instruction.
 
 ![image](https://github.com/user-attachments/assets/512edc06-4524-43f7-833f-e3d087869a38)
 
