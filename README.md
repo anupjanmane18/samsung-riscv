@@ -751,7 +751,7 @@ Reference GitHub repo is [![GitHub](https://img.shields.io/badge/-GitHub-181717?
 ------------------------------------------------------------------------------------------------------------------
 
 <details>
-   <summary>Task - 5 -> Overview, Components Required, Circuit Connection, Pinout Diagram and Table for Pin connection required to build the display driver.</summary>
+   <summary><b>Task 5:Overview, Components Required, Circuit Connection, Pinout Diagram and Table for Pin connection required to build the display driver.</summary>
 
 # Developing a 7 segment display driver using VSDSquadron Mini
 
