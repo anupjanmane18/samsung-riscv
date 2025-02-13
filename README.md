@@ -751,139 +751,302 @@ Reference GitHub repo is [![GitHub](https://img.shields.io/badge/-GitHub-181717?
 ------------------------------------------------------------------------------------------------------------------
 
 <details>
-   <summary><b>Task 5:Overview, Components Required, Circuit Connection, Pinout Diagram and Table for Pin connection required to build the display driver.</summary>
+   <summary><b>Task 5:Overview, Components Required, Operational Workflow, Applications, Circuit Connection, Pinout Diagram and Table for Pin connection required to build the display driver.</summary>
 
-# Developing a 7 segment display driver using VSDSquadron Mini
+# Digital Object Counter using VSDSquadron Mini
 
 ## Overview
-The project presents an innovative integration of CH32V003 RISC-V processor to create a 7 segment LED display driver. The processor decodes the given number into its binary counterpart and according to the bits it gives signal to each segment whether it should glow or not. Thus, instead of setting the display manually everytime we can automate it. Currently we are driving only one display, future works will include integrating 2 displays together.
+The Digital Object Counter is an automated system designed to accurately detect and count objects as they pass through a designated area. By utilizing advanced sensor technology and a high-performance microcontroller, it provides real-time tracking and clear data visualization. This system helps improve efficiency by reducing manual effort, minimizing errors, and enabling accurate record-keeping.
+
+With its ability to integrate into industrial automation systems, the Digital Object Counter is well-suited for manufacturing, logistics, retail, and traffic monitoring. Its reliable performance, durable design, and adaptability make it a valuable tool for businesses looking to optimize productivity and streamline operations
 
 ## Components Required
-* VSDSquadron Mini
-* 1 seven segment display
-* Breadboard
-* Power Supply
-* Jumper Wires
-* Resistors
+Here is the components list :
+
+Here is the updated table:  
+
+| **S.No** | **Component**              | **Function**                          |  
+|---------|--------------------------|--------------------------------------|  
+| 1       | VSD Squadron Mini Board  | Microcontroller for processing data  |  
+| 2       | IR Sensor                | Detects objects passing through      |  
+| 3       | I2C LCD Display          | Displays the object count            |  
+| 4       | Push Buttons             | Resets the count when pressed        |  
+| 5       | Power Supply (5V or Battery) | Provides power to the system         |   
+
+## Operational Workflow:
+* The sensor detects an object passing through the counting zone.
+* The microcontroller processes the sensor signal and increments the count.
+* The display unit updates in real time to reflect the new count.
+* A reset button allows manual resetting of the counter when required
+
+## Applications:
+* ✔ Automated Manufacturing – Tracks production output on assembly lines
+* ✔ Retail & Commercial Spaces – Monitors foot traffic in malls and offices
+* ✔ Industrial Process Control – Ensures accurate inventory and stock management
+* ✔ Traffic & Public Safety – Counts vehicles or pedestrians for data analytic
 
 ## Circuit Connection
-* Connect the Common Anode/Cathode pin to VCC or GND via a resistor depending on the type of display.
-* Connect `PD0` to pin `a` of the display.
-* Connect `PC0` to pin `b` of the display.
-* Connect `PD2` to pin `c` of the display.
-* Connect `PD3` to pin `d` of the display.
-* Connect `PD4` to pin `e` of the display.
-* Connect `PD5` to pin `f` of the display.
-* Connect `PD6` to pin `g` of the display.
+## 🔗 Connection Table: Digital Object Counter using VSD Squadron Mini Board  
 
-The above pins recives the signals the on/off signals for the segments.
+| **Component**               | **Pin on Component** | **Connected to (VSD Squadron Mini Board)** |
+|-----------------------------|---------------------|---------------------------------------------|
+| 🟢 **IR Sensor**            | **VCC**             | **5V**                                     |
+|                             | **GND**             | **GND**                                    |
+|                             | **OUT**             | **PD6 (GPIO_Pin_6)**                       |
+| 🟡 **I2C LCD Display (PCF8574)** | **SDA**             | **PC1 (GPIO_Pin_1)**                       |
+|                             | **SCL**             | **PC2 (GPIO_Pin_2)**                       |
+|                             | **VCC**             | **5V**                                     |
+|                             | **GND**             | **GND**                                    |
+| 🔴 **Buzzer**               | **Positive (+)**    | **PD5 (GPIO_Pin_5)**                       |
+|                             | **Negative (-)**    | **GND**                                    |
+| 🔵 **Push Button (Reset)**  | **One Terminal**    | **GND**                                    |
+|                             | **Other Terminal**  | **PD1 (GPIO_Pin_1)**                       |
+
+
+
 
 ## Pinout Diagram for the project
-The following diagram is for Common Cathode seven segment led:
+The following diagram represents the pin configuration for the Digital Object Counter using the VSD Squadron Mini
 
-![diagram](https://github.com/user-attachments/assets/3f48ed70-0a26-402d-acac-4975a63a9954)
+![block diagram object counter](https://github.com/user-attachments/assets/6cbbefac-5f95-4a1d-a407-5feeeb11d848)
 
 
 
-## Table for Pin connection
-| SEVEN SEGMENT  | RISC-V |
-| -------------- | ------ |
-| a              | PD0    |
-| b              | PC0    |
-| c              | PD2    |
-| d              | PD3    |
-| e              | PD4    |
-| f              | PD5    |
-| g              | PD6    |
-| CA/CC          | VCC/GND|
 
 ## Code uploaded on the board
 ```
-#include <ch32v00x.h>
 #include <debug.h>
+#include <ch32v00x.h>
+#include <ch32v00x_gpio.h>
 
-// Define the GPIO pins for the driver
-#define a GPIO_Pin_0        // Pin for segment a
-#define b GPIO_Pin_1        // Pin for segment b (corrected to a different pin)
-#define c GPIO_Pin_2        // Pin for segment c
-#define d GPIO_Pin_3        // Pin for segment d      
-#define e GPIO_Pin_4        // Pin for segment e    
-#define f GPIO_Pin_5        // Pin for segment f    
-#define g GPIO_Pin_6        // Pin for segment g    
+// Defining the SDA and SCL Pins for I2C Communication
+#define SDA_PIN GPIO_Pin_1
+#define SCL_PIN GPIO_Pin_2
+// Defining the LCD_Address 
+#define LCD_Address 0x27
 
-int outar[] = {0, 0, 0, 0, 0, 0, 0};
-int out[] = {126, 48, 109, 121, 51, 91, 95, 112, 127, 123, 119, 31, 78, 61, 79, 71};
+void lcd_send_cmd(unsigned char cmd);
+void lcd_send_data(unsigned char data);
+void lcd_send_str(unsigned char *str);
+void lcd_init(void);
+void delay_ms(unsigned int ms);
 
-// Function prototypes
-void GPIO_Config(void);
-void assign(int);
-
-// GPIO configuration function
-void GPIO_Config(void) {
-    GPIO_InitTypeDef GPIO_InitStructure = {0};
-
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD, ENABLE); // Enable clock for Port D
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE); // Enable clock for Port C
-
-    // Configure pin a as output
-    GPIO_InitStructure.GPIO_Pin = a;
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
-    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-    GPIO_Init(GPIOD, &GPIO_InitStructure);
-
-    // Configure pin b as output
-    GPIO_InitStructure.GPIO_Pin = b;
-    GPIO_Init(GPIOC, &GPIO_InitStructure);
-
-    // Configure pin c as output
-    GPIO_InitStructure.GPIO_Pin = c;
-    GPIO_Init(GPIOD, &GPIO_InitStructure);
-
-    // Configure pin d as output
-    GPIO_InitStructure.GPIO_Pin = d;
-    GPIO_Init(GPIOD, &GPIO_InitStructure);
-
-    // Configure pin e as output
-    GPIO_InitStructure.GPIO_Pin = e;
-    GPIO_Init(GPIOD, &GPIO_InitStructure);
-
-    // Configure pin f as output
-    GPIO_InitStructure.GPIO_Pin = f;
-    GPIO_Init(GPIOD, &GPIO_InitStructure);
-
-    // Configure pin g as output
-    GPIO_InitStructure.GPIO_Pin = g;
-    GPIO_Init(GPIOD, &GPIO_InitStructure);
-}
-
-int main() {
-    // SystemCoreClockUpdate(); // Uncomment if needed
-    Delay_Init();
-    GPIO_Config();
-    
-    while (1) {
-        for (int i = 0; i < 16; i++) {
-            assign(i);
-            
-            // Set the GPIO pins based on the outar array
-            GPIO_WriteBit(GPIOD, a, outar[6] ? SET : RESET);
-            GPIO_WriteBit(GPIOC, b, outar[5] ? SET : RESET);
-            GPIO_WriteBit(GPIOD, c, outar[4] ? SET : RESET);
-            GPIO_WriteBit(GPIOD, d, outar[3] ? SET : RESET);
-            GPIO_WriteBit(GPIOD, e, outar[2] ? SET : RESET);
-            GPIO_WriteBit(GPIOD, f, outar[1] ? SET : RESET);
-            GPIO_WriteBit(GPIOD, g, outar[0] ? SET : RESET);
-            
-            Delay_Ms(5000); // Delay for 5 seconds
+// Function to produce a delay
+void delay_ms(unsigned int ms) {
+    for (unsigned int i = 0; i < ms; i++) {
+        for (unsigned int j = 0; j < 8000; j++) {
+            __NOP();
         }
     }
 }
 
-void assign(int num) {
-    int mask = 1;
-    for (int i = 0; i < 7; i++) {
-        outar[i] = (mask & out[num]) ? 1 : 0; // Set outar based on the current number
-        mask = mask << 1; // Shift the mask to check the next bit
+// Function to initialize GPIO pins
+void GPIO_INIT(void) {
+    GPIO_InitTypeDef GPIO_InitStructure;
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOD | RCC_APB2Periph_GPIOC, ENABLE);
+    
+    // Push button
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_1;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; // Defined as Input Type
+    GPIO_Init(GPIOD, &GPIO_InitStructure);
+    
+    // Buzzer pin
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_Init(GPIOD, &GPIO_InitStructure);
+    
+    // Initialize SDA and SCL pins for I2C
+    GPIO_InitStructure.GPIO_Pin = SDA_PIN | SCL_PIN;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_OD;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_Init(GPIOC, &GPIO_InitStructure);
+    
+    // Pin 4 OUT PIN FOR IR SENSOR
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6; // Defines which Pin to configure
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU; // Defines Input Type
+    GPIO_Init(GPIOD, &GPIO_InitStructure);
+}
+
+// Function to write a byte of data to the I2C bus
+void i2c_write(unsigned char dat) {
+    for (unsigned char i = 0; i < 8; i++) {
+        GPIO_WriteBit(GPIOC, SCL_PIN, Bit_RESET);
+        if (dat & (0x80 >> i)) {
+            GPIO_WriteBit(GPIOC, SDA_PIN, Bit_SET);
+        } else {
+            GPIO_WriteBit(GPIOC, SDA_PIN, Bit_RESET);
+        }
+        GPIO_WriteBit(GPIOC, SCL_PIN, Bit_SET);
+    }
+    GPIO_WriteBit(GPIOC, SCL_PIN, Bit_RESET);
+}
+
+// Function to start I2C communication
+void i2c_start(void) {
+    GPIO_WriteBit(GPIOC, SCL_PIN, Bit_SET);
+    GPIO_WriteBit(GPIOC, SDA_PIN, Bit_SET);
+    delay_ms(1);
+    GPIO_WriteBit(GPIOC, SDA_PIN, Bit_RESET);
+    delay_ms(1);
+    GPIO_WriteBit(GPIOC, SCL_PIN, Bit_RESET);
+}
+
+// Function to stop I2C communication
+void i2c_stop(void) {
+    GPIO_WriteBit(GPIOC, SDA_PIN, Bit_RESET);
+    GPIO_WriteBit(GPIOC, SCL_PIN, Bit_RESET);
+    delay_ms(1);
+    GPIO_WriteBit(GPIOC, SCL_PIN, Bit_SET);
+    delay_ms(1);
+    GPIO_WriteBit(GPIOC, SDA_PIN, Bit_SET);
+}
+
+// Function to wait for an acknowledgment bit
+void i2c_ACK(void) {
+    GPIO_WriteBit(GPIOC, SCL_PIN, Bit_RESET);
+    GPIO_WriteBit(GPIOC, SDA_PIN, Bit_SET);
+    GPIO_WriteBit(GPIOC, SCL_PIN, Bit_SET);
+    while(GPIO_ReadInputDataBit(GPIOC, SDA_PIN));
+    GPIO_WriteBit(GPIOC, SCL_PIN, Bit_RESET);
+}
+
+// Function to send a command to the LCD
+void lcd_send_cmd(unsigned char cmd) {
+    unsigned char cmd_l = (cmd << 4) & 0xf0;
+    unsigned char cmd_u = cmd & 0xf0;
+
+    i2c_start();
+    i2c_write(LCD_Address << 1);
+    i2c_ACK();
+    i2c_write(cmd_u | 0x0C);
+    i2c_ACK();
+    i2c_write(cmd_u | 0x08);
+    i2c_ACK();
+    delay_ms(1);
+    i2c_write(cmd_l | 0x0C);
+    i2c_ACK();
+    i2c_write(cmd_l | 0x08);
+    i2c_ACK();
+    delay_ms(1);
+    i2c_stop();
+}
+
+// Function to send data to the LCD
+void lcd_send_data(unsigned char data) 
+{
+    unsigned char data_l = (data << 4) & 0xf0;
+    unsigned char data_u = data & 0xf0;
+
+    i2c_start();
+    i2c_write(LCD_Address << 1);
+    i2c_ACK();
+    i2c_write(data_u | 0x0D);
+    i2c_ACK();
+    i2c_write(data_u | 0x09);
+    i2c_ACK();
+    delay_ms(1);
+    i2c_write(data_l | 0x0D);
+    i2c_ACK();
+    i2c_write(data_l | 0x09);
+    i2c_ACK();
+    delay_ms(1);
+    i2c_stop();
+}
+
+// Function to send a string to the LCD
+void lcd_send_str(unsigned char *str) 
+{
+    while (*str) 
+	{
+        lcd_send_data(*str++);
+    }
+}
+
+// Function to initialize the LCD
+void lcd_init(void) 
+{
+    lcd_send_cmd(0x02); // Return home
+    lcd_send_cmd(0x28); // 4-bit mode, 2 lines, 5x7 dots
+    lcd_send_cmd(0x0C); // Display On, cursor off
+    lcd_send_cmd(0x06); // Increment cursor (shift cursor to right)
+    lcd_send_cmd(0x01); // Clear display
+    delay_ms(20); // Wait for the LCD to process the clear command
+}
+
+// Function to set pin mode dynamically
+void set_pin_mode(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, GPIOMode_TypeDef GPIO_Mode)
+{
+    GPIO_InitTypeDef GPIO_InitStructure;
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_Init(GPIOx, &GPIO_InitStructure);
+}
+
+int main(void)
+{
+    uint8_t IR = 1;
+    uint8_t n = 0;
+    //uint8_t oldValue = 1;
+
+    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1); // Configuring NVIC priority group
+    SystemCoreClockUpdate(); // Update System Core Clock
+    Delay_Init(); // Initialize Delay
+    GPIO_INIT(); // Initialize the GPIO pins
+    delay_ms(20);
+    // Initialize the LCD Display
+    lcd_init();
+    delay_ms(20);
+    lcd_send_cmd(0x80); // Move the cursor to first row first column
+    delay_ms(20);
+    unsigned char WelcomeMessage[16] = "Count:";
+    lcd_send_str(WelcomeMessage);
+    delay_ms(2000);
+
+    while (1)
+	{
+        IR = GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_6);
+        if (IR == 0) // Read state of Pin 4 (IR sensor)
+		{ 
+            //oldValue = 0;
+            n++ ; // Increment count
+
+            // Update the LCD with the new count
+            lcd_send_cmd(0x80); // Move the cursor to second row first column
+            delay_ms(20);
+            unsigned char countMessage[16];
+            sprintf((char*)countMessage, "Count: %d", n); // Format the count message
+            lcd_send_str(countMessage);
+            delay_ms(2);
+
+            // Activate the buzzer
+            GPIO_WriteBit(GPIOD, GPIO_Pin_5, Bit_SET);
+            delay_ms(500); // Buzzer on for 500 ms
+            GPIO_WriteBit(GPIOD, GPIO_Pin_5, Bit_RESET); // Turn off buzzer
+        } else if (IR == 1) 
+		{
+            
+			//oldValue = 1;
+        }
+
+        // Check if the push button is pressed to reset the count
+        if (GPIO_ReadInputDataBit(GPIOD, GPIO_Pin_1) == 0 ) 
+		{
+            n = 0; // Reset count
+            delay_ms(2);
+            lcd_send_cmd(0xC0); // Move the cursor to second row first column
+            delay_ms(20);
+            unsigned char resetMessage[16] = "Count reset";
+            lcd_send_str(resetMessage);
+            delay_ms(1000); // Display reset message for 2 seconds
+            //Update the count display
+            lcd_send_cmd(0x01);
+			lcd_send_cmd(0x80); // Move the cursor to first row first column
+            delay_ms(20);
+            unsigned char WelcomeMessage[16] = "Count: 0";
+            lcd_send_str(WelcomeMessage);
+        }
     }
 }
 ```
