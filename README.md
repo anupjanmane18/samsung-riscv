@@ -811,6 +811,13 @@ The following diagram represents the pin configuration for the Digital Object Co
 ![block diagram object counter](https://github.com/user-attachments/assets/6cbbefac-5f95-4a1d-a407-5feeeb11d848)
 
 
+### End of 5th task
+</details>
+
+------------------------------------------------------------------------------------------------------------------
+
+<details>
+   <summary><b>Task 6: Working Code & short video demonstration .</summary>
 
 
 ## Code uploaded on the board
@@ -1050,3 +1057,5 @@ int main(void)
     }
 }
 ```
+# short video demonstration 
+Project Simulation Video: https://drive.google.com/file/d/1OdS_hKHWbflZjCNQyB4ynPRz-J8ltaon/view?usp=drive_link
